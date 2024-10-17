@@ -1,41 +1,27 @@
-import { Menu, Search, Contact, Drama, Film, Home, Laugh } from "lucide-react";
+import { Menu, Search, Contact } from "lucide-react";
+import Icon, { IconName } from "./Icon";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
 import { useState } from "react";
+import { genres } from "@/data";
 
 const NavItems = () => (
     <>
         <Button variant="ghost" className="justify-start" asChild>
             <a href="/">
-                <Home className="h-5 w-5 mr-2" />
+                <Icon name="house" className="h-5 w-5 mr-2" />
                 Home
             </a>
         </Button>
-        <Button variant="ghost" className="justify-start" asChild>
-            <a href="/movies/animation">
-                <Film className="h-5 w-5 mr-2" />
-                Animation
-            </a>
-        </Button>
-        <Button variant="ghost" className="justify-start" asChild>
-            <a href="/movies/comedy">
-                <Laugh className="h-5 w-5 mr-2" />
-                Comedy
-            </a>
-        </Button>
-        <Button variant="ghost" className="justify-start" asChild>
-            <a href="/movies/drama">
-                <Drama className="h-5 w-5 mr-2" />
-                Drama
-            </a>
-        </Button>
-        <Button variant="ghost" className="justify-start" asChild>
-            <a href="/movies/scifiFantasy">
-                <Drama className="h-5 w-5 mr-2" />
-                Scifi & Fantasy
-            </a>
-        </Button>
+        {genres.map((genre) => (
+            <Button key={genre.name} variant="ghost" className="justify-start" asChild>
+                <a href="/movies/animation">
+                    <Icon name={genre.icon as IconName} className="h-5 w-5 mr-2" />
+                    {genre.name}
+                </a>
+            </Button>
+        ))}
         <Button variant="ghost" className="justify-start" asChild>
             <a href="/contact">
                 <Contact className="h-5 w-5 mr-2" />
@@ -46,7 +32,7 @@ const NavItems = () => (
 );
 
 const NavBar = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <nav className="bg-white shadow-md">
@@ -85,7 +71,7 @@ const NavBar = () => {
                 </div>
             </div>
         </nav>
-    )
-}
+    );
+};
 
 export default NavBar;

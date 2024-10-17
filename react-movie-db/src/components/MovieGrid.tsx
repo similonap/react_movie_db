@@ -26,7 +26,7 @@ const MovieGrid = ({ movies }: MovieGridProps) => {
                             size="sm"
                             className="mt-2"
                         >
-                            <a href={`https://www.imdb.com/title/${movie.imdbId}`} target="_blank" rel="noopener noreferrer">
+                            <a href={`https://www.imdb.com/title/${movie.imdbId}`}>
                                 View on IMDB
                             </a>
                         </Button>

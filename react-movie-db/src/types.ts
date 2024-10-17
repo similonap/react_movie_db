@@ -4,3 +4,10 @@ export interface Movie {
     posterURL: string
     imdbId: string
 }
+
+export interface Genre {
+    name: string;
+    image: string;
+    link: string;
+    icon: string;
+}
