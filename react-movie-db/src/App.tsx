@@ -5,8 +5,6 @@ import NavBar from "./components/NavBar"
 import MovieGrid from "./components/MovieGrid"
 import Footer from "./components/Footer"
 import { Movie } from "./types"
-import WelcomeBlock from "./components/WelcomeBlock"
-import ContactForm from "./components/ContactForm"
 
 export default function App() {
   const [movies, setMovies] = useState<Movie[]>([])
