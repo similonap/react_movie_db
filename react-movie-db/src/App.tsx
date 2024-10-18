@@ -6,16 +6,19 @@ import { Movie } from "./types"
 import WelcomeBlock from "./components/WelcomeBlock"
 
 export default function App() {
-  const [movies, setMovies] = useState<Movie[]>([])
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const loadMovies = async (genre: string) => {
     try {
+      setLoading(true);
       const response = await fetch(`https://sampleapis.assimilate.be/movies/${genre}`)
       const data = await response.json()
       setMovies(data)
     } catch (error) {
       console.error('Error fetching movies:', error)
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -28,7 +31,7 @@ export default function App() {
 
 
       <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <MovieGrid movies={movies} />
+        <MovieGrid movies={movies} loading={loading} />
       </main>
 
       <Footer />
